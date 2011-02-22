@@ -1,8 +1,5 @@
-
 import os
 import re
-
-import pairtree
 
 
 def id2ptree(id, shorty_length=2, sep="/"):
