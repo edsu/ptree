@@ -13,7 +13,6 @@ def id2ptree(id, shorty_length=2, sep="/"):
 def ptree2id(path, shorty_length=2, sep="/"):
     """Pass in a PairTree path and get back the identifier that it maps to.
     """
-    #path = _get_path_from_dirpath(dirpath, sep)
     return _decode("".join(path.split("/")))
 
 
@@ -24,17 +23,6 @@ def _split_id(id, shorty_length):
         parts.append(encoded_id[:shorty_length])
         encoded_id = encoded_id[shorty_length:]
     return parts
-
-
-def _get_path_from_dirpath(dirpath, sep):
-    head, tail = dirpath.split(sep)
-    path = [tail]
-    while not self.pairtree_root == head:
-        head, tail = os.path.split(head)
-        path.append(tail)
-    path.reverse()
-    return path
-
 
 def _encode(s):
     if isinstance(id, unicode):
