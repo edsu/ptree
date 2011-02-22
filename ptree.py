@@ -24,6 +24,7 @@ def _split_id(id, shorty_length):
         encoded_id = encoded_id[shorty_length:]
     return parts
 
+
 def _encode(s):
     if isinstance(id, unicode):
         s = s.encode('utf-8')
