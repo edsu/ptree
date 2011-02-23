@@ -16,7 +16,7 @@ ptree draws from Ben O'Steen's PairTree Python module [2], which provides a
 lot more functionality for storing bitstreams on disk. ptree intentionally  
 focuses soley on the identifier/filepath mapping, and leaves IO operations up 
 to you. The unit tests were shamlessly stolen from John Kunze's File::PairTree 
-CPAN module [2]. 
+CPAN module [3]. 
 
 Author: Ed Summers <ehs@pobox.com>
 License: Public Domain
