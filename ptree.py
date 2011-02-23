@@ -7,13 +7,15 @@ def id2ptree(id, shorty_length=2, sep="/"):
     you can pass in the "shorty length" (default is 2) and the
     path separator (default is /).
     """
+    if sep == "": sep = "/"
     return sep + sep.join(_split_id(id, shorty_length)) + sep
 
 
 def ptree2id(path, shorty_length=2, sep="/"):
     """Pass in a PairTree path and get back the identifier that it maps to.
     """
-    return _decode("".join(path.split("/")))
+    # TODO: should this be smarter?
+    return _decode("".join(path.split(sep)))
 
 
 def _split_id(id, shorty_length):

@@ -46,9 +46,10 @@ class PairTreeTests(TestCase):
 
     def test_id2ptree(self):
         for case in self.i2ptree_tests:
-            if len(case) != 3:
-                continue
-            result = id2ptree(case[0])
+            if len(case) == 3:
+                result = id2ptree(case[0])
+            elif len(case) == 4: # uses custom separator
+                result = id2ptree(case[0], sep=case[3])
             msg = "%s: id2ptree(%s) = %s but got %s" % \
                     (case[2], case[0], case[1], result)
             self.assertEqual(result, case[1], msg=msg)
