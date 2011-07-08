@@ -12,8 +12,19 @@ def id2ptree(id, sep="/"):
 def ptree2id(path, sep="/"):
     """Pass in a PairTree path and get back the identifier that it maps to.
     """
-    # TODO: should this be smarter?
-    return _decode("".join(path.split(sep)))
+    parts = path.strip().split(sep)
+    id_parts = []
+    for part in parts:
+        if len(part) == 2:
+            id_parts.append(part)
+        elif len(part) == 1:
+            if id_parts:
+                id_parts.append(part)
+                break
+        elif len(part) > 2:
+            if id_parts:
+                break
+    return _decode("".join(id_parts))
 
 
 def _split_id(id):
