@@ -1,28 +1,27 @@
 import re
 
 
-def id2ptree(id, shorty_length=2, sep="/"):
+def id2ptree(id, sep="/"):
     """Pass in a identifier and get back a PairTree path. Optionally
-    you can pass in the "shorty length" (default is 2) and the
-    path separator (default is /).
+    you can pass in the path separator (default is /).
     """
     if sep == "": sep = "/"
-    return sep + sep.join(_split_id(id, shorty_length)) + sep
+    return sep + sep.join(_split_id(id)) + sep
 
 
-def ptree2id(path, shorty_length=2, sep="/"):
+def ptree2id(path, sep="/"):
     """Pass in a PairTree path and get back the identifier that it maps to.
     """
     # TODO: should this be smarter?
     return _decode("".join(path.split(sep)))
 
 
-def _split_id(id, shorty_length):
+def _split_id(id):
     encoded_id = _encode(id)
     parts = []
     while encoded_id:
-        parts.append(encoded_id[:shorty_length])
-        encoded_id = encoded_id[shorty_length:]
+        parts.append(encoded_id[:2])
+        encoded_id = encoded_id[2:]
     return parts
 
 
