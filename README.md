@@ -1,13 +1,13 @@
 ptree
 =====
 
-The ptree module has two functions to help you work with PairTree identifiers 
-and file paths: id2ptree and ptree2id. 
-
 [PairTree] [1] is an technique from the digital preservation community for 
 safely mapping identifiers to file paths, and back again. It can be helpful 
 when writing resources to disk so that they can be identified later on by 
 merely looking at the filesystem layout.
+
+The ptree module has two functions to help you work with PairTree identifiers 
+and file paths: id2ptree and ptree2id. 
 
 ```python
 >>> import ptree
@@ -16,6 +16,9 @@ merely looking at the filesystem layout.
 >>> ptree.ptree2id('/in/fo/+l/cc/n=/12/34/56/78/')
 u'info:lccn/12345678'
 ```
+
+Thanks
+------
 
 ptree draws from Ben O'Steen's [PairTree Python module] [2], which provides a 
 lot more functionality for storing bitstreams on disk. ptree intentionally
