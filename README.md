@@ -20,7 +20,7 @@ u'info:lccn/12345678'
 Thanks
 ------
 
-ptree draws from Ben O'Steen's [PairTree Python module] [2], which provides a 
+ptree draws from Ben O'Steen's [PairTree] [2] Python module], which provides a 
 lot more functionality for storing bitstreams on disk. ptree intentionally
 focuses soley on the identifier/filepath mapping, and leaves IO operations up 
 to you. The unit tests were shamlessly stolen from John Kunze's 
