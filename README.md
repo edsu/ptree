@@ -7,7 +7,7 @@ when writing resources to disk so that they can be identified later on by
 merely looking at the filesystem layout.
 
 The ptree module has two functions to help you work with PairTree identifiers 
-and file paths: id2ptree and ptree2id. 
+and file paths: `id2ptree` and `ptree2id`. 
 
 ```python
 >>> import ptree
