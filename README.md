@@ -3,7 +3,6 @@ ptree
 
 [![Build Status](https://secure.travis-ci.org/edsu/ptree.png)](http://travis-ci.org/edsu/ptree)
 
-
 [PairTree] [1] is an technique from the digital preservation community for 
 safely mapping identifiers to file paths, and back again. It can be helpful 
 when writing resources to disk so that they can be identified later on by 
