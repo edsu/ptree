@@ -33,4 +33,4 @@ License
 
 [1]: https://confluence.ucop.edu/display/Curation/PairTree
 [2]: http://pypi.python.org/pypi/Pairtree
-[3]: http://search.cpan.org/dist/Pairtree/
+[3]: http://search.cpan.org/dist/File-Pairtree/lib/File/Pairtree.pm
