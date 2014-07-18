@@ -1,12 +1,13 @@
 import re
 
 
-def id2ptree(id, sep="/"):
+def id2ptree(id, sep="/", relpath=False):
     """Pass in a identifier and get back a PairTree path. Optionally
-    you can pass in the path separator (default is /).
+    you can pass in the path separator (default is /). Set relpath=True to
+    omit the leading separator.
     """
     if sep == "": sep = "/"
-    return sep + sep.join(_split_id(id)) + sep
+    return (not relpath and sep or "") + sep.join(_split_id(id)) + sep
 
 
 def ptree2id(path, sep="/"):
