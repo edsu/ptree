@@ -27,6 +27,7 @@ class PairTreeTests(TestCase):
         ('what-the-*@?#!^!?', '/wh/at/-t/he/-^/2a/@^/3f/#!/^5/e!/^3/f/', 'weird chars from spec example'),
         ('\\"*+,<=>?^|', '/^5/c^/22/^2/a^/2b/^2/c^/3c/^3/d^/3e/^3/f^/5e/^7/c/', 'all weird visible chars'),
         ('Années de Pèlerinage', '/An/n^/c3/^a/9e/s^/20/de/^2/0P/^c/3^/a8/le/ri/na/ge/', 'UTF-8 chars'),
+        ('2014SPIE.9158E..04Z', '20/14/SP/IE/,9/15/8E/,,/04/Z/', 'I want a relative path', None, True)
     )
 
     # TODO: ptree2id should support all these tests
@@ -50,6 +51,8 @@ class PairTreeTests(TestCase):
                 result = id2ptree(case[0])
             elif len(case) == 4: # uses custom separator
                 result = id2ptree(case[0], sep=case[3])
+            elif len(case) == 5: # uses abspath bool option
+                result = id2ptree(case[0], relpath=case[4])
             msg = "%s: id2ptree(%s) = %s but got %s" % \
                     (case[2], case[0], case[1], result)
             self.assertEqual(result, case[1], msg=msg)
