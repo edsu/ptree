@@ -26,5 +26,8 @@ setup(
         'Topic :: Communications :: File Sharing',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: System :: Filesystems',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
     ],
 )

@@ -1,3 +1,6 @@
+import sys
+if sys.version_info > (3,):
+    from builtins import chr
 import re
 
 
@@ -38,10 +41,20 @@ def _split_id(id):
 
 
 def _encode(s):
-    if isinstance(id, unicode):
+    if sys.version_info > (3,):
+        test_type = str
+    else:
+        test_type = unicode
+    if isinstance(s, test_type):
         s = s.encode('utf-8')
 
-    s = _encode_regex.sub(_char2hex, s)
+    regex_chars = r"[\"*+,<=>?\\^|]|[^\x21-\x7e]"
+    if sys.version_info > (3,) and isinstance(s, bytes):
+        s = re.compile(regex_chars.encode('utf-8')).sub(_char2hex, s)
+        s = s.decode('utf-8')
+    else:
+        s = re.compile(regex_chars, re.U).sub(_char2hex, s)
+
     parts = []
     for char in s:
         parts.append(_encode_map.get(char, char))
@@ -53,19 +66,24 @@ def _decode(id):
     for char in id:
         parts.append(_decode_map.get(char, char))
     dec_id = "".join(parts)
-    return _decode_regex.sub(_hex2char, dec_id).decode("utf-8")
+    try:
+        return _decode_regex.sub(_hex2char, dec_id).decode("utf-8")
+    except AttributeError:
+        return _decode_regex.sub(_hex2char, dec_id)
 
 
 def _char2hex(m):
-    return "^%02x"%ord(m.group(0))
+    if sys.version_info > (3,) and isinstance(m.group(0), bytes):
+        return b"^%02x"%ord(m.group(0))
+    else:
+        return "^%02x" % ord(m.group(0))
 
 
 def _hex2char(m):
     return chr(int(m.group(1), 16))
 
 
-_encode_regex = re.compile(r"[\"*+,<=>?\\^|]|[^\x21-\x7e]", re.U)
 _decode_regex = re.compile(r"\^(..)", re.U)
-_encode_map = { '/' : '=',  ':' : '+',  '.' : ','  } # not easy on the eyes 
-_decode_map = dict([(v, k) for k, v in _encode_map.items()]) # reversed 
+_encode_map = { '/' : '=',  ':' : '+',  '.' : ','  } # not easy on the eyes
+_decode_map = dict([(v, k) for k, v in list(_encode_map.items())]) # reversed 
 
