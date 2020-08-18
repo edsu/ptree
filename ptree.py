@@ -1,6 +1,7 @@
-from builtins import chr
-import re
 import sys
+if sys.version_info > (3,):
+    from builtins import chr
+import re
 
 
 def id2ptree(id, sep="/", relpath=False):
