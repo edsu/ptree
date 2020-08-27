@@ -5,7 +5,7 @@ with open("README.md") as f:
 
 setup(
     name = 'ptree',
-    version = '0.2',
+    version = '0.3',
     url = 'http://github.com/edsu/ptree',
     author = 'Ed Summers',
     author_email = 'ehs@pobox.com',
